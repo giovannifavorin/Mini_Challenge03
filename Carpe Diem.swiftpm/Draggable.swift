@@ -10,6 +10,7 @@ import SpriteKit
 class Draggable: SKScene {
     var borderNode: SKSpriteNode?
     var isGrudado: Bool = false
+    var buttonNode: SKSpriteNode?
     
     override func didMove(to view: SKView) {
         
@@ -43,40 +44,31 @@ class Draggable: SKScene {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
         for touch in touches {
             let location = touch.location(in: self)
             let nodes = nodes(at: location)
             
-//            if let ovo = atPoint(location) as? dragNode {
-//                for node in nodes {
-//                    if node == borderNode {
-//                        isGrudado = true
-//                    } else if node != borderNode {
-//                        isGrudado = false
-//                    }
-//                    print("\(isGrudado)")
-//                }
-//            }
-            
             if let ovo = atPoint(location) as? dragNode {
                 let isSobreBorderNode = nodes.contains(borderNode!)
-                
                 if isSobreBorderNode {
                     isGrudado = true
+                    
                 } else {
                     isGrudado = false
+                    
+                    if let buttonNode = buttonNode {
+                        buttonNode.removeFromParent()
+                        self.buttonNode = nil
+                    }
                 }
                 print("\(isGrudado)")
             }
-            
         }
         
-        let buttonNode = SKSpriteNode(color: .green, size: CGSize(width: 400, height: 400))
-        if isGrudado == true {
-            addChild(buttonNode)
-        } else if isGrudado == false{
-            buttonNode.removeFromParent()
+        
+        if isGrudado == true && buttonNode == nil {
+            buttonNode = SKSpriteNode(color: .green, size: CGSize(width: 400, height: 400))
+            addChild(buttonNode!)
         }
     }
 }
