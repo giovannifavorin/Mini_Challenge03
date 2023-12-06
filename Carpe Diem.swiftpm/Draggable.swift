@@ -11,11 +11,14 @@ class Draggable: SKScene {
     var borderNode: SKSpriteNode?
     var isGrudado: Bool = false
     var buttonNode: SKSpriteNode?
+    var screenSize = UIScreen.main.bounds.size
+    
     
     override func didMove(to view: SKView) {
+        self.screenSize = self.size
+        let node = dragNode(screenSize: screenSize)
+        node.position = CGPoint(x: screenSize.width / 2, y: screenSize.height / 2)
         
-        let node = dragNode()
-        node.position = CGPoint(x: 500, y: 500)
         addChild(node)
         
         let borderRect = CGRect(x: -250, y: -250, width: 700, height: 700)
@@ -32,12 +35,8 @@ class Draggable: SKScene {
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
             let location = touch.location(in: self)
-            let nodes = nodes(at: location)
             
             if let ovo = atPoint(location) as? dragNode {
-                //                if !isGrudado {
-                //                    card.position = location
-                //                }
                 ovo.position = location
             }
         }
@@ -47,27 +46,27 @@ class Draggable: SKScene {
         for touch in touches {
             let location = touch.location(in: self)
             let nodes = nodes(at: location)
+            let isSobreBorderNode = nodes.contains(borderNode!)
             
-            if let ovo = atPoint(location) as? dragNode {
-                let isSobreBorderNode = nodes.contains(borderNode!)
-                if isSobreBorderNode {
-                    isGrudado = true
-                    
-                } else {
-                    isGrudado = false
-                    
-                    if let buttonNode = buttonNode {
-                        buttonNode.removeFromParent()
-                        self.buttonNode = nil
-                    }
+            if isSobreBorderNode {
+                isGrudado = true
+            } else {
+                isGrudado = false
+                
+                if let buttonNode = buttonNode {
+                    buttonNode.removeFromParent()
+                    self.buttonNode = nil
                 }
-                print("\(isGrudado)")
             }
+            print("\(isGrudado)")
         }
         
-        
+#warning("FIX área de sobreposição +")
+#warning("FIX bug de movimento rápido do drag ++")
         if isGrudado == true && buttonNode == nil {
-            buttonNode = SKSpriteNode(color: .green, size: CGSize(width: 400, height: 400))
+            buttonNode = SKSpriteNode(color: .green, size: CGSize(width: screenSize.width * 0.5, height: screenSize.height * 0.5))
+            buttonNode?.position = CGPoint(x: screenSize.width - buttonNode!.size.width / 2, y: buttonNode!.size.height / 2)
+            
             addChild(buttonNode!)
         }
     }
@@ -81,11 +80,12 @@ class dragNode: SKSpriteNode {
         fatalError("NSCoding not supported")
     }
     
-    init() {
+    init(screenSize: CGSize) {
+        let newSize = CGSize(width: screenSize.width * 0.2, height: screenSize.width * 0.2)
+        
         self.nodeTexture = SKTexture(imageNamed: "Ellipse")
-        self.nodeSize = CGSize(width: 250, height: 250)
+        self.nodeSize = newSize
         
         super.init(texture: nodeTexture, color: .clear, size: nodeSize)
     }
-    
 }
