@@ -8,17 +8,6 @@
 import SpriteKit
 
 class Memory: SKScene {
-    //    override func didMove(to view: SKView) {
-    //        self.backgroundColor = SKColor.purple
-    //    }
-    //
-    //    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-    //        if let view = self.view {
-    //            let nextScene = Moto(size: self.size)
-    //            nextScene.scaleMode = self.scaleMode
-    //            view.presentScene(nextScene, transition: SKTransition.fade(withDuration: 1.0))
-    //        }
-    //    }
     
     var meuBotao: SKSpriteNode!
     

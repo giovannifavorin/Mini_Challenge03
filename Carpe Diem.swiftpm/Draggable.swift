@@ -63,6 +63,8 @@ class Draggable: SKScene {
         
 #warning("FIX área de sobreposição +")
 #warning("FIX bug de movimento rápido do drag ++")
+#warning("ADD salvar localização do adesivo")
+        
         if isGrudado == true && buttonNode == nil {
             buttonNode = SKSpriteNode(color: .green, size: CGSize(width: screenSize.width * 0.5, height: screenSize.height * 0.5))
             buttonNode?.position = CGPoint(x: screenSize.width - buttonNode!.size.width / 2, y: buttonNode!.size.height / 2)
