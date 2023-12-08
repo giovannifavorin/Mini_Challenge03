@@ -21,7 +21,7 @@ class MovingNodeScene: SKScene {
         let moveAction = SKAction.move(to: CGPoint(x: size.width, y: 0), duration: 3.0)
         
         let sequenceAction = SKAction.sequence([waitAction, moveAction])
-        
+        #warning("possibilidades - parallax++, SKCameraNode")
         movingNode.run(sequenceAction)
     }
     

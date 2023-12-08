@@ -61,9 +61,9 @@ class Draggable: SKScene {
             print("\(isGrudado)")
         }
         
-#warning("FIX área de sobreposição +")
+#warning("FIX área de sobreposição - os quatro cantos do node +")
 #warning("FIX bug de movimento rápido do drag ++")
-#warning("ADD salvar localização do adesivo")
+#warning("ADD salvar localização do adesivo - UserDefault")
         
         if isGrudado == true && buttonNode == nil {
             buttonNode = SKSpriteNode(color: .green, size: CGSize(width: screenSize.width * 0.5, height: screenSize.height * 0.5))

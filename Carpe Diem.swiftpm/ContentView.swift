@@ -8,7 +8,7 @@ class ContentViewModel : ObservableObject{
     var cena : SKScene
 
     init() {
-        self.cena = MovingNodeScene()
+        self.cena = Draggable()
         cena.scaleMode = .aspectFit
     }
 
@@ -27,8 +27,6 @@ struct ContentView: View {
                 SpriteView(scene: vm.retornaCena(size: proxy.size))
             }
         }.ignoresSafeArea()
-
-
     }
 }
 /*
