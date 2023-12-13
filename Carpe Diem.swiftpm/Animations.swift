@@ -21,8 +21,21 @@ class MovingNodeScene: SKScene {
         let moveAction = SKAction.move(to: CGPoint(x: size.width, y: 0), duration: 3.0)
         
         let sequenceAction = SKAction.sequence([waitAction, moveAction])
-        #warning("possibilidades - parallax++, SKCameraNode")
-        movingNode.run(sequenceAction)
+#warning("possibilidades - parallax++, SKCameraNode")
+        movingNode.run(sequenceAction) {
+            self.transitionToNextScene()
+        }
+    }
+    
+    func transitionToNextScene() {
+        // Criar a próxima cena que você deseja transicionar
+        let nextScene = Chest(size: size)
+        
+        // Configurar uma transição de cena (por exemplo, cruz dissolve)
+        let transition = SKTransition.crossFade(withDuration: 1.0)
+        
+        // Apresentar a próxima cena com a transição
+        view?.presentScene(nextScene, transition: transition)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

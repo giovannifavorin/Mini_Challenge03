@@ -8,7 +8,7 @@ class ContentViewModel : ObservableObject{
     var cena : SKScene
 
     init() {
-        self.cena = Draggable()
+        self.cena = MovingNodeScene()
         cena.scaleMode = .aspectFit
     }
 
