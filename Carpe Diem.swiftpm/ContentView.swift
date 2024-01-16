@@ -1,10 +1,7 @@
 import SwiftUI
 import SpriteKit
 
-
-import SpriteKit
-
-class ContentViewModel : ObservableObject{
+class ContentViewModel : ObservableObject {
     var cena : SKScene
 
     init() {
@@ -18,6 +15,7 @@ class ContentViewModel : ObservableObject{
     }
 }
 
+
 struct ContentView: View {
     @StateObject var vm = ContentViewModel()
 
@@ -29,14 +27,3 @@ struct ContentView: View {
         }.ignoresSafeArea()
     }
 }
-/*
-struct ContentView: View {
-    var body: some View {
-//        let moto = Moto()
-        let ab = Draggable(size: CGSize(width: self.size.width, height: 2732))
-        VStack {
-            SpriteView(scene: ab)
-        }
-    }
-}
-*/

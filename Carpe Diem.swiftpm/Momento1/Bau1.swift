@@ -1,11 +1,6 @@
-//
-//  Draggable.swift
-//  Carpe Diem
-//
-//  Created by Giovanni Favorin de Melo on 04/12/23.
-//
-
 import SpriteKit
+
+//Esse arquivo, deve ficar o código para as interatividades e configurações do baú
 
 class Draggable: SKScene {
     var borderNode: SKSpriteNode?

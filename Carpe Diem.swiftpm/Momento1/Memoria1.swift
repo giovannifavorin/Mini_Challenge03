@@ -1,11 +1,6 @@
-//
-//  SpriteChest.swift
-//  Carpe Diem
-//
-//  Created by Giovanni Favorin de Melo on 01/12/23.
-//
-
 import SpriteKit
+
+//Nesse arquivo, deve ficar o código para lembrança1
 
 class Chest: SKScene {
     
