@@ -17,7 +17,7 @@ let package = Package(
             name: "Carpe Diem",
             targets: ["AppModule"],
             bundleIdentifier: "Giovanni.Carpe-Diem",
-            teamIdentifier: "TLC9D54B8V",
+            teamIdentifier: "DVMDCJRNKS",
             displayVersion: "1.0",
             bundleVersion: "1",
             appIcon: .placeholder(icon: .location),
@@ -28,7 +28,7 @@ let package = Package(
             ],
             supportedInterfaceOrientations: [
                 .landscapeRight,
-                .landscapeLeft,
+                .landscapeLeft
             ]
         )
     ],

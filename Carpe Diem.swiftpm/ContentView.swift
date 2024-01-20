@@ -2,19 +2,16 @@ import SwiftUI
 import SpriteKit
 
 class ContentViewModel : ObservableObject {
-    var cena : SKScene
-
-    init() {
-        self.cena = MovingNodeScene()
-        cena.scaleMode = .aspectFit
-    }
-
-    func retornaCena (size : CGSize) -> SKScene {
-        self.cena.size = size
-        return cena
+    func initialScene(screenSize: CGSize) -> SKScene {
+        DataManager.instance.scaleMode = .aspectFit
+        DataManager.instance.screenSize = screenSize
+        
+        let trip1 = Trip.build()
+        let chest1 = Chest.build(nextScene: trip1)
+        let memory1 = Memory.build(nextScene: chest1)
+        return Trip.build(nextScene: memory1)
     }
 }
-
 
 struct ContentView: View {
     @StateObject var vm = ContentViewModel()
@@ -22,7 +19,7 @@ struct ContentView: View {
     var body: some View {
         GeometryReader { proxy in
             ZStack {
-                SpriteView(scene: vm.retornaCena(size: proxy.size))
+                SpriteView(scene: vm.initialScene(screenSize: proxy.size))
             }
         }.ignoresSafeArea()
     }
