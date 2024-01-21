@@ -5,9 +5,13 @@ extension Trip {
     class Scene: GameScene {
         var movingNode: SKSpriteNode?
         let manager: Manager
+        var motoAsset: String
+        var backgroundAsset: String
         
-        init(manager: Manager) {
+        init(manager: Manager, motoAsset: String, backgroundAsset: String) {
             self.manager = manager
+            self.motoAsset = motoAsset
+            self.backgroundAsset = backgroundAsset
             super.init()
         }
         
@@ -16,22 +20,29 @@ extension Trip {
         }
         
         override func didMove(to view: SKView) {
-            movingNode = SKSpriteNode(imageNamed: "Ellipse")
+            let background = SKSpriteNode(imageNamed: "\(backgroundAsset)")
+            background.size = size  // Configurar o tamanho do background para cobrir toda a cena
+            background.position = CGPoint(x: size.width / 2, y: size.height / 2)
+            background.zPosition = -1  // Colocar o background atrás de outros nós
+            addChild(background)
+            
+            movingNode = SKSpriteNode(imageNamed: "\(motoAsset)")
             guard let movingNode else { return }
             
             // Criar o nó inicial com uma textura
-            movingNode.scale(to: CGSize(width: size.width * 0.2, height: size.width * 0.2))
+            movingNode.scale(to: CGSize(width: movingNode.size.width, height: size.height * 0.2))
+
             
             // Configurar o ponto de ancoragem no centro inferior do nó
             movingNode.anchorPoint = CGPoint(x: 1, y: 0)
             
             // Calcular a posição inicial considerando a largura do nó
-            movingNode.position = CGPoint(x: movingNode.size.width, y: 0)
+            movingNode.position = CGPoint(x: movingNode.size.width, y: size.height * 0.1)
             addChild(movingNode)
             
             // Iniciar uma animação para mover o nó pela tela
             let waitAction = SKAction.wait(forDuration: 1.0)
-            let moveAction = SKAction.move(to: CGPoint(x: size.width, y: 0), duration: 3.0)
+            let moveAction = SKAction.move(to: CGPoint(x: size.width, y: size.height * 0.1), duration: 3.0)
             
             let sequenceAction = SKAction.sequence([waitAction, moveAction])
             

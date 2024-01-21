@@ -5,9 +5,11 @@ import SpriteKit
 extension Memory {
     class Scene: GameScene {
         let manager: Manager
+        var backgroundAsset: String
         
-        init(manager: Manager) {
+        init(manager: Manager, backgroundAsset: String) {
             self.manager = manager
+            self.backgroundAsset = backgroundAsset
             super.init()
         }
         
@@ -16,13 +18,10 @@ extension Memory {
         }
         
         override func didMove(to view: SKView) {
-            let fundo = SKSpriteNode(imageNamed: "Pixel") // Substitua "suaImagemDeFundo" pelo nome da sua imagem
-            fundo.size = self.size // Define o tamanho do nó igual ao tamanho da cena
-            fundo.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2) // Posiciona o nó no centro da cena
-            fundo.zPosition = -1 // Coloca o fundo atrás de outros nós
-            print(size.width)
-            print(size.height)
-            print(size)
+            let fundo = SKSpriteNode(imageNamed: "\(backgroundAsset)")
+            fundo.size = self.size
+            fundo.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
+            fundo.zPosition = -1
             addChild(fundo)
         }
         
