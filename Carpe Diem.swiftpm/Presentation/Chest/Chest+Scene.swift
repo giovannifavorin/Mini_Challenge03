@@ -36,11 +36,11 @@ extension Chest {
                 addChild(currentSticker)
             }
             
-            let chestComponentRect = CGRect(x: -250, y: -250, width: 700, height: 700)
-            chestComponentNode = SKSpriteNode(color: .red, size: chestComponentRect.size)
+            chestComponentNode = SKSpriteNode(imageNamed: "chest")
             if let chestComponentNode {
                 chestComponentNode.zPosition = -1
-                chestComponentNode.position = CGPoint(x: 100, y: 100)
+                chestComponentNode.scale(to: CGSize(width: size.width * 0.7, height: size.height * 0.75))
+                chestComponentNode.position = CGPoint(x:self.size.width / 2, y: self.size.height / 2)
                 addChild(chestComponentNode)
             }
         }
@@ -77,10 +77,12 @@ extension Chest {
                     }
                 } else {
                     if buttonNode == nil {
-                        buttonNode = SKSpriteNode(color: .green, size: CGSize(width: size.width * 0.5, height: size.height * 0.5))
-                        buttonNode?.position = CGPoint(x: size.width - buttonNode!.size.width / 2, y: buttonNode!.size.height / 2)
+                        buttonNode = SKSpriteNode(imageNamed: "confirmButton")
+                        guard let buttonNode else { return }
+                        buttonNode.scale(to: CGSize(width: buttonNode.size.width, height: buttonNode.size.height))
+                        buttonNode.position = CGPoint(x: size.width - buttonNode.size.width / 2, y: buttonNode.size.height / 2)
                         
-                        addChild(buttonNode!)
+                        addChild(buttonNode)
                     }
                 }
             }
