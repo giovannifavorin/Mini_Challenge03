@@ -21,18 +21,20 @@ extension Chest {
         
         override func didMove(to view: SKView) {
             for sticker in self.manager.dataManager.stickers {
-                let node = StickerNode(screenSize: size)
-                node.position = sticker.position
-                node.isUserInteractionEnabled = false
-                
-                addChild(node)
+                print("\(sticker.image)")
+                    let node = StickerNode(screenSize: size, stickerAsset: sticker.image)
+                    node.position = sticker.position
+                    node.isUserInteractionEnabled = false
+                    
+                    addChild(node)
             }
             
             self.manager.generateNewSticker()
             
-            currentSticker = StickerNode(screenSize: size)
+            currentSticker = StickerNode(screenSize: size, stickerAsset: manager.stickerAsset)
             if let currentSticker {
-                currentSticker.position = CGPoint(x: size.width / 2, y: size.height / 2)
+                currentSticker.position = CGPoint(x: currentSticker.size.width * 0.4, y: size.height / 2)
+                currentSticker.scale(to: CGSize(width: size.width * 0.14, height: size.height * 0.08))
                 addChild(currentSticker)
             }
             
@@ -49,8 +51,9 @@ extension Chest {
             for touch in touches {
                 guard let buttonNode, let currentSticker else {return}
                 if buttonNode.frame.contains(touch.location(in: self)) {
-                    manager.bindSticker(position: currentSticker.position)
+                    manager.bindSticker(imageName: manager.stickerAsset, position: currentSticker.position)
                     manager.goTo(currentView: view)
+                    print("\(manager.dataManager.stickers)")
                 }
             }
         }
@@ -80,7 +83,7 @@ extension Chest {
                         buttonNode = SKSpriteNode(imageNamed: "confirmButton")
                         guard let buttonNode else { return }
                         buttonNode.scale(to: CGSize(width: buttonNode.size.width, height: buttonNode.size.height))
-                        buttonNode.position = CGPoint(x: size.width - buttonNode.size.width / 2, y: buttonNode.size.height / 2)
+                        buttonNode.position = CGPoint(x: size.width - buttonNode.size.width / 1.8, y: buttonNode.size.height / 1.8)
                         
                         addChild(buttonNode)
                     }
@@ -98,10 +101,10 @@ extension Chest {
             fatalError("NSCoding not supported")
         }
         
-        init(screenSize: CGSize) {
+        init(screenSize: CGSize, stickerAsset: String) {
             let newSize = CGSize(width: screenSize.width * 0.2, height: screenSize.width * 0.2)
             
-            self.nodeTexture = SKTexture(imageNamed: "Ellipse")
+            self.nodeTexture = SKTexture(imageNamed: "\(stickerAsset)")
             self.nodeSize = newSize
             
             super.init(texture: nodeTexture, color: .clear, size: nodeSize)
