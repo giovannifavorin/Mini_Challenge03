@@ -24,6 +24,7 @@ extension Chest {
                 print("\(sticker.image)")
                     let node = StickerNode(screenSize: size, stickerAsset: sticker.image)
                     node.position = sticker.position
+                node.scale(to: CGSize(width: size.width * 0.14, height: size.height * 0.08))
                     node.isUserInteractionEnabled = false
                     
                     addChild(node)

@@ -18,15 +18,12 @@ extension Chest {
         }
         
         mutating func bindSticker(imageName: String, position: CGPoint) {
-            dataManager.stickers.append(Sticker(image: imageName, position: position, isAdded: true))
-//            if let last = dataManager.stickers.last {
-//                dataManager.stickers.removeLast()
-//                dataManager.stickers.append(
-//                    .init(image: last.image, position: position, isAdded: true)
-//                )
-//            } else {
-//                
-//            }
+            if let last = dataManager.stickers.last {
+                dataManager.stickers.removeLast()
+                dataManager.stickers.append(
+                    .init(image: last.image, position: position, isAdded: true)
+                )
+            }
         }
     }
 }

@@ -1,6 +1,6 @@
 import SpriteKit
 
-struct DataManager {
+class DataManager {
     var screenSize: CGSize = .zero
     var scaleMode: SKSceneScaleMode = .aspectFill
     var stickers: [Sticker] = .init()
