@@ -26,6 +26,23 @@ extension Trip {
             background.zPosition = -1  // Colocar o background atrás de outros nós
             addChild(background)
             
+            let dialogBox = SKSpriteNode(imageNamed: "dialogBox")
+            dialogBox.position = CGPoint(x: size.width / 2, y: size.height / 2)
+            dialogBox.zPosition = 2
+            addChild(dialogBox)
+            
+            let dialog = SKLabelNode(text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum")
+            dialog.fontSize = 40
+            dialog.numberOfLines = 4
+            dialog.zPosition = 4
+            dialog.verticalAlignmentMode = .center
+            dialog.lineBreakMode = .byWordWrapping
+            dialog.fontColor = .black
+            dialog.preferredMaxLayoutWidth = 200
+            dialog.position = CGPoint(x: size.width / 2, y: size.height / 2)
+            dialog.preferredMaxLayoutWidth = size.width * 0.71
+            addChild(dialog)
+            
             movingNode = SKSpriteNode(imageNamed: "\(motoAsset)")
             guard let movingNode else { return }
             
