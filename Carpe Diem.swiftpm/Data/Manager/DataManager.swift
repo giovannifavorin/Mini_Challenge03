@@ -5,8 +5,13 @@ class DataManager {
     var scaleMode: SKSceneScaleMode = .aspectFill
     var stickers: [Sticker] = .init()
     
-    static var instance = DataManager()
+    let textArray: [String] = [
+        "aaaaa", "bbbb", "cccc"
+    ]
+
     
+    static var instance = DataManager()
+
     private init() {}
 }
 

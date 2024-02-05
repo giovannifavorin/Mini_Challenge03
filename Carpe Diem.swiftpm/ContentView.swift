@@ -9,8 +9,9 @@ class ContentViewModel : ObservableObject {
 //        let trip1 = Trip.build()
         let chest1 = Chest.build( stickerAsset: "stickerBoat")
         let memory1 = Memory.build(nextScene: chest1, backgroundAsset: "lake")
+        let teste = Trip.build(nextScene: chest1, motoAsset: "moto", backgroundAsset: "cidade")
 //        return Trip.build(nextScene: memory1, motoAsset: "moto", backgroundAsset: "mountains")
-        return Trip.build(motoAsset: "moto", backgroundAsset: "cidade")
+        return teste
     }
 }
 
