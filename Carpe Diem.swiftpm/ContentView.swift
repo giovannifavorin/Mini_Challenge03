@@ -6,12 +6,13 @@ class ContentViewModel : ObservableObject {
         DataManager.instance.scaleMode = .aspectFit
         DataManager.instance.screenSize = screenSize
         
-//        let trip1 = Trip.build()
-        let chest1 = Chest.build( stickerAsset: "stickerBoat")
+        let chest2 = Chest.build(stickerAsset: "stickerCoffee")
+        let memory2 = Memory.build(nextScene: chest2, backgroundAsset: "bar")
+        let trip2 = Trip.build(nextScene: memory2, motoAsset: "moto", backgroundAsset: "city")
+        let chest1 = Chest.build(nextScene: trip2, stickerAsset: "stickerBoat")
         let memory1 = Memory.build(nextScene: chest1, backgroundAsset: "lake")
-        let teste = Trip.build(nextScene: chest1, motoAsset: "moto", backgroundAsset: "cidade")
-//        return Trip.build(nextScene: memory1, motoAsset: "moto", backgroundAsset: "mountains")
-        return teste
+        return Trip.build(nextScene: memory1, motoAsset: "moto", backgroundAsset: "mountains")
+        
     }
 }
 

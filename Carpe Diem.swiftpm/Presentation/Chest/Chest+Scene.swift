@@ -24,7 +24,7 @@ extension Chest {
                 print("\(sticker.image)")
                 let node = StickerNode(screenSize: size, stickerAsset: sticker.image)
                 node.position = sticker.position
-                node.scale(to: CGSize(width: size.width * 0.14, height: size.height * 0.08))
+                node.scale(to: CGSize(width: node.size.width, height: node.size.height))
                 node.isUserInteractionEnabled = false
                 
                 addChild(node)
@@ -35,7 +35,7 @@ extension Chest {
             currentSticker = StickerNode(screenSize: size, stickerAsset: manager.stickerAsset)
             if let currentSticker {
                 currentSticker.position = CGPoint(x: currentSticker.size.width * 0.4, y: size.height / 2)
-                currentSticker.scale(to: CGSize(width: size.width * 0.14, height: size.height * 0.08))
+                currentSticker.scale(to: CGSize(width: currentSticker.size.width, height: currentSticker.size.height))
                 addChild(currentSticker)
             }
             
@@ -103,10 +103,9 @@ extension Chest {
         }
         
         init(screenSize: CGSize, stickerAsset: String) {
-            let newSize = CGSize(width: screenSize.width * 0.2, height: screenSize.width * 0.2)
             
             self.nodeTexture = SKTexture(imageNamed: "\(stickerAsset)")
-            self.nodeSize = newSize
+            self.nodeSize = nodeTexture.size()
             
             super.init(texture: nodeTexture, color: .clear, size: nodeSize)
         }
