@@ -17,7 +17,6 @@ let package = Package(
             name: "Carpe Diem",
             targets: ["AppModule"],
             bundleIdentifier: "Giovanni.Carpe-Diem",
-            teamIdentifier: "DVMDCJRNKS",
             displayVersion: "1.0",
             bundleVersion: "1",
             appIcon: .placeholder(icon: .location),

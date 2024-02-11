@@ -7,11 +7,11 @@ class ContentViewModel : ObservableObject {
         DataManager.instance.screenSize = screenSize
         
         let chest2 = Chest.build(stickerAsset: "stickerCoffee")
-        let memory2 = Memory.build(nextScene: chest2, backgroundAsset: "bar")
-        let trip2 = Trip.build(nextScene: memory2, motoAsset: "moto", backgroundAsset: "city")
-        let chest1 = Chest.build(nextScene: trip2, stickerAsset: "stickerBoat")
-        let memory1 = Memory.build(nextScene: chest1, backgroundAsset: "lake")
-        return Trip.build(nextScene: memory1, motoAsset: "moto", backgroundAsset: "mountains")
+        let memory2 = Memory.build(nextScene: chest2, backgroundAsset: "bar", textEnum: .text2)
+        let trip2 = Trip.build(nextScene: memory2, motoAsset: "moto", backgroundAsset: "city", textEnum: .text2)
+        let chest1 = Chest.build(nextScene: trip2, stickerAsset: "stickerBoat", textEnum: .text1)
+        let memory1 = Memory.build(nextScene: chest1, backgroundAsset: "lake", textEnum: .text1)
+        return Trip.build(nextScene: memory1, motoAsset: "moto", backgroundAsset: "mountains", textEnum: .text1)
         
     }
 }
