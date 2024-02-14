@@ -21,5 +21,5 @@ enum memoryText:String {
 }
 
 enum chestText:String {
-    case text1 = "Eu quero guardar essa lembrança comigo, mas onde é o melhor lugar para colocá-la?"
+    case text1 = "Eu quero guardar essa lembrança comigo, mas onde é o melhor lugar para colar essa lembrança?"
 }
